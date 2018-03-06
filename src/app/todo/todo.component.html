@@ -1,0 +1,24 @@
+<!-- Display static todo text -->
+<h2>{{selectedTodo.text}}</h2>
+
+<!-- Two way binding input. Text box to add todo  
+    Although ngModel is a valid Angular directive, it isn't available 
+    by default. It belongs to the optional FormsModule and you must opt-in 
+    to use it.( import in app.module.ts) -->
+
+<div>
+  <label> Add new todo: 
+    <input [(ngModel)]="selectedTodo.text" placeholder="What do you need to do?">
+  </label>
+</div>
+
+
+<!-- UL Class comes from the mock -todos?  -->
+<ul class="todos">
+  <!-- list of todo iterating through from our mock todos -->
+  <li *ngFor="let aTodo of todos" (click)="onSelect(aTodo)">
+    <span class="badge">todos: {{aTodo.text}}</span>
+  </li>
+</ul>
+
+<app-todo-detail [todo]="selectedTodo"></app-todo-detail>
